@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nhậu Cùng Huy Bu 🍻 | Thiệp mời sinh nhật</title>
+<meta name="description" content="Thiệp mời sinh nhật Huy Bu — 19h00 ngày 07/11/2026 tại Quán Xích Lô 245. Đến là nhậu, nhậu là phải say!">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="Nhậu Cùng Huy Bu 🍻">
+<meta property="og:description" content="19h00 • 07/11/2026 • Quán Xích Lô 245. Anh em đến đông nha!">
+<meta property="og:type" content="website">
+<meta property="og:image" content="poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0c; --card:#131318; --line:#2a2a33;
+  --amber:#ffb400; --hot:#ff2e63; --cyan:#08f7fe; --text:#f2f2f5; --mute:#9a9aa8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',system-ui,sans-serif;overflow-x:hidden;min-height:100vh}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%,rgba(255,46,99,.18),transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(255,180,0,.14),transparent 55%)}
+main{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:28px 16px 60px}
+
+.tag{display:inline-block;font-weight:800;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);
+  border:1px solid var(--cyan);padding:6px 12px;border-radius:2px;text-shadow:0 0 8px var(--cyan);box-shadow:0 0 12px rgba(8,247,254,.35),inset 0 0 8px rgba(8,247,254,.15)}
+header{text-align:center;padding:18px 0 8px}
+.pre{font-family:'Anton',sans-serif;letter-spacing:.12em;color:var(--mute);margin:18px 0 0;font-size:1rem;text-transform:uppercase}
+h1{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;line-height:1.08;font-size:clamp(3.4rem,17vw,6rem);margin:14px 0 4px;position:relative}
+h1 .l1{display:block;color:var(--text)}
+h1 .l2{display:block;color:var(--amber);text-shadow:0 0 14px rgba(255,180,0,.7),0 0 40px rgba(255,180,0,.35)}
+h1 .l3{display:block;color:transparent;-webkit-text-stroke:2px var(--hot);text-shadow:0 0 22px rgba(255,46,99,.7)}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;overflow:hidden;clip-path:inset(0 0 0 0)}
+.glitch::before{color:var(--cyan);transform:translate(-2px,0);animation:g1 3.2s infinite steps(1)}
+.glitch::after{color:var(--hot);transform:translate(2px,0);animation:g2 3.2s infinite steps(1)}
+@keyframes g1{0%,90%,100%{clip-path:inset(0 0 100% 0)}91%{clip-path:inset(10% 0 60% 0)}93%{clip-path:inset(55% 0 20% 0)}95%{clip-path:inset(0 0 100% 0)}}
+@keyframes g2{0%,92%,100%{clip-path:inset(0 0 100% 0)}93%{clip-path:inset(40% 0 30% 0)}96%{clip-path:inset(70% 0 5% 0)}98%{clip-path:inset(0 0 100% 0)}}
+.sub{margin-top:14px;color:var(--mute);font-size:.95rem}
+.sub b{color:var(--text)}
+
+.sec{margin-top:34px}
+.sec-t{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:1.15rem;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sec-t::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sec-t i{font-style:normal;color:var(--hot)}
+
+/* video */
+.vid{position:relative;border-radius:22px;padding:3px;background:linear-gradient(135deg,var(--hot),var(--amber),var(--cyan));box-shadow:0 0 40px rgba(255,46,99,.3);max-width:340px;margin:0 auto}
+.vid video{display:block;width:100%;border-radius:20px;background:#000;aspect-ratio:9/16;object-fit:cover}
+.snd{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.3);color:#fff;
+  border-radius:99px;padding:8px 14px;font:600 .8rem 'Be Vietnam Pro';cursor:pointer}
+.vcap{text-align:center;color:var(--mute);font-size:.85rem;margin-top:12px}
+
+/* countdown */
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cd div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 4px;text-align:center}
+.cd b{display:block;font-family:'Anton';font-weight:400;font-size:2rem;color:var(--amber);text-shadow:0 0 12px rgba(255,180,0,.5);line-height:1}
+.cd span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden;margin-bottom:12px}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--amber));box-shadow:0 0 14px var(--c,var(--amber))}
+.card small{display:block;color:var(--mute);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:6px}
+.card h3{font-family:'Anton';font-weight:400;font-size:1.7rem;text-transform:uppercase;letter-spacing:.03em;line-height:1.1}
+.card p{color:var(--mute);margin-top:4px;font-size:.92rem}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#0a0a0c;background:var(--amber);font-weight:800;font-size:.9rem;
+  border:0;border-radius:10px;padding:13px 16px;cursor:pointer;width:100%;font-family:inherit;transition:transform .15s,box-shadow .15s;margin-top:14px;text-transform:uppercase;letter-spacing:.04em}
+.btn:hover,.btn:active{transform:translateY(-2px);box-shadow:0 6px 22px rgba(255,180,0,.45)}
+.btn.hot{background:var(--hot);color:#fff}.btn.hot:hover{box-shadow:0 6px 22px rgba(255,46,99,.5)}
+.btn.cy{background:var(--cyan)}.btn.cy:hover{box-shadow:0 6px 22px rgba(8,247,254,.45)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--amber);box-shadow:none}
+.cal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.cal .btn{margin-top:0;font-size:.8rem;padding:12px 8px}
+.cal .btn.main{grid-column:1/-1;font-size:.9rem}
+.hint{color:var(--mute);font-size:.75rem;margin-top:10px;text-align:center}
+
+.menu{--c:var(--cyan)}
+footer{text-align:center;margin-top:44px;color:var(--mute);font-size:.8rem}
+footer b{font-family:'Anton';font-weight:400;font-size:1.4rem;color:var(--amber);letter-spacing:.08em;display:block;margin-bottom:6px;text-transform:uppercase}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.glitch::before,.glitch::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<main>
+  <header>
+    <span class="tag">Thiệp mời sinh nhật</span>
+    <p class="pre">Anh em ơi, tới giờ</p>
+    <h1>
+      <span class="l1 glitch" data-t="Nhậu cùng">Nhậu cùng</span>
+      <span class="l2">Huy Bu</span>
+      <span class="l3">🍻 Party 🍻</span>
+    </h1>
+    <p class="sub">Sinh nhật <b>Huy Bu</b> — đến là nhậu, nhậu là phải <b>say</b>!</p>
+  </header>
+
+  <section class="sec rv">
+    <div class="sec-t"><i>▶</i> Lời mời từ chủ tiệc</div>
+    <div class="vid">
+      <video id="v" src="invite.mp4" poster="poster.jpg" playsinline muted loop autoplay preload="metadata"></video>
+      <button class="snd" id="snd" type="button">🔇 Bật tiếng</button>
+    </div>
+    <p class="vcap">Bấm “Bật tiếng” để nghe Huy Bu mời trực tiếp 😎</p>
+  </section>
+
+  <section class="sec rv">
+    <div class="sec-t"><i>⏱</i> Đếm ngược tới giờ G</div>
+    <div class="cd" id="cd">
+      <div><b id="d">--</b><span>Ngày</span></div>
+      <div><b id="h">--</b><span>Giờ</span></div>
+      <div><b id="m">--</b><span>Phút</span></div>
+      <div><b id="s">--</b><span>Giây</span></div>
+    </div>
+  </section>
+
+  <section class="sec rv">
+    <div class="sec-t"><i>📍</i> Thông tin tiệc</div>
+
+    <div class="card" style="--c:var(--amber)">
+      <small>Thời gian</small>
+      <h3>19h00 • Thứ Bảy<br>07/11/2026</h3>
+      <p>Nhớ đến đúng giờ, đừng để chủ tiệc đợi lâu nha!</p>
+      <div class="cal">
+        <button class="btn main" id="calMain" type="button">🔔 Nhắc tôi nhé</button>
+        <a class="btn ghost" id="calG" target="_blank" rel="noopener">Google Calendar</a>
+        <button class="btn ghost" id="calI" type="button">iPhone / Apple (.ics)</button>
+        <button class="btn ghost" id="calA" type="button">Android</button>
+        <button class="btn ghost" id="calO" type="button">Outlook / PC (.ics)</button>
+      </div>
+      <p class="hint">Tự thêm lời nhắc trước 1 ngày &amp; 2 giờ khi mở file lịch.</p>
+    </div>
+
+    <div class="card" style="--c:var(--hot)">
+      <small>Địa điểm</small>
+      <h3>Quán Xích Lô 245</h3>
+      <p>Bấm bên dưới để mở Google Maps chỉ đường.</p>
+      <a class="btn hot" href="https://maps.app.goo.gl/JCJJkiJA2Cok2xRJ8" target="_blank" rel="noopener">🗺️ Mở Google Maps</a>
+    </div>
+
+    <div class="card" style="--c:var(--cyan)">
+      <small>Liên hệ nếu cần</small>
+      <h3>0773 948 461</h3>
+      <p>Gặp <b style="color:var(--text)">Bé Bu CUTE</b></p>
+      <a class="btn cy" href="tel:0773948461">📞 Gọi ngay</a>
+    </div>
+
+    <div class="card menu">
+      <small>Menu tham khảo</small>
+      <h3>Xem trước món 🍢</h3>
+      <p>Chọn trước món cho đỡ phải nghĩ, tới là chiến.</p>
+      <a class="btn cy" href="https://drive.google.com/drive/folders/1eVb8DKnjDfihHCmkdw9WtBSBxm7SJu-B?usp=sharing" target="_blank" rel="noopener">📖 Xem menu</a>
+    </div>
+  </section>
+
+  <footer class="rv">
+    <b>Huy Bu 🍻</b>
+    Hẹn gặp anh em lúc 19h00 ngày 07/11!
+  </footer>
+</main>
+
+<script>
+(function(){
+  /* ===== Event data ===== */
+  var EV={
+    title:"Nhậu Cùng Huy Bu 🍻 (Sinh nhật Huy Bu)",
+    loc:"Quán Xích Lô 245",
+    desc:"Sinh nhật Huy Bu. Địa điểm: Quán Xích Lô 245 — https://maps.app.goo.gl/JCJJkiJA2Cok2xRJ8 . Liên hệ: 0773948461 (Bé Bu CUTE).",
+    startUTC:"20261107T120000Z", // 19:00 GMT+7
+    endUTC:"20261107T150000Z",   // 22:00 GMT+7
+    startMs:Date.UTC(2026,10,7,12,0,0)
+  };
+  var ua=navigator.userAgent||"";
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/i.test(ua);
+
+  /* Google Calendar link (works on PC, Android, iOS browser) */
+  var gUrl="https://calendar.google.com/calendar/render?action=TEMPLATE"+
+    "&text="+encodeURIComponent(EV.title)+
+    "&dates="+EV.startUTC+"/"+EV.endUTC+
+    "&details="+encodeURIComponent(EV.desc)+
+    "&location="+encodeURIComponent(EV.loc+", https://maps.app.goo.gl/JCJJkiJA2Cok2xRJ8")+
+    "&ctz=Asia/Ho_Chi_Minh";
+  document.getElementById("calG").href=gUrl;
+
+  /* ICS (iOS/Apple/Outlook + reminders) */
+  function esc(t){return t.replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n")}
+  function ics(){
+    var L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Nhau Cung Huy Bu//VI","CALSCALE:GREGORIAN","METHOD:PUBLISH",
+      "BEGIN:VEVENT","UID:nhau-cung-huy-bu-20261107@huybu",
+      "DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,""),
+      "DTSTART:"+EV.startUTC,"DTEND:"+EV.endUTC,
+      "SUMMARY:"+esc(EV.title),"LOCATION:"+esc(EV.loc),"DESCRIPTION:"+esc(EV.desc),
+      "URL:https://maps.app.goo.gl/JCJJkiJA2Cok2xRJ8",
+      "BEGIN:VALARM","TRIGGER:-P1D","ACTION:DISPLAY","DESCRIPTION:Ngày mai nhậu cùng Huy Bu!","END:VALARM",
+      "BEGIN:VALARM","TRIGGER:-PT2H","ACTION:DISPLAY","DESCRIPTION:2 tiếng nữa nhậu cùng Huy Bu, chuẩn bị đi thôi!","END:VALARM",
+      "END:VEVENT","END:VCALENDAR"];
+    return L.join("\r\n");
+  }
+  function dlICS(){
+    var blob=new Blob([ics()],{type:"text/calendar;charset=utf-8"});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download="nhau-cung-huy-bu.ics";
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);a.remove()},1500);
+  }
+  function openGoogle(){window.open(gUrl,"_blank","noopener")}
+  /* Android: Google Calendar app opens the TEMPLATE link; fall back to .ics */
+  function androidAdd(){window.location.href=gUrl}
+
+  var main=document.getElementById("calMain");
+  if(isIOS){main.textContent="🍎 Thêm vào lịch iPhone + nhắc";main.onclick=dlICS}
+  else if(isAndroid){main.textContent="🤖 Thêm vào lịch Android + nhắc";main.onclick=androidAdd}
+  else{main.textContent="💻 Thêm vào Google Calendar";main.onclick=openGoogle}
+  document.getElementById("calI").onclick=dlICS;
+  document.getElementById("calO").onclick=dlICS;
+  document.getElementById("calA").onclick=androidAdd;
+
+  /* ===== Countdown ===== */
+  function pad(n){return String(n).padStart(2,"0")}
+  function tick(){
+    var t=EV.startMs-Date.now();
+    if(t<=0){["d","h","m","s"].forEach(function(i){document.getElementById(i).textContent="00"});return}
+    var s=Math.floor(t/1000);
+    document.getElementById("d").textContent=pad(Math.floor(s/86400));
+    document.getElementById("h").textContent=pad(Math.floor(s%86400/3600));
+    document.getElementById("m").textContent=pad(Math.floor(s%3600/60));
+    document.getElementById("s").textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+
+  /* ===== Video sound toggle ===== */
+  var v=document.getElementById("v"),b=document.getElementById("snd");
+  b.onclick=function(){
+    if(v.muted){v.muted=false;v.currentTime=0;v.play().catch(function(){});b.textContent="🔊 Tắt tiếng"}
+    else{v.muted=true;b.textContent="🔇 Bật tiếng"}
+  };
+  v.play&&v.play().catch(function(){});
+
+  /* ===== Reveal on scroll ===== */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll(".rv").forEach(function(el){io.observe(el)});
+
+  /* ===== Beer bubbles / sparks background ===== */
+  var c=document.getElementById("fx"),x=c.getContext("2d"),W,H,P=[];
+  function size(){W=c.width=innerWidth;H=c.height=innerHeight}
+  size();addEventListener("resize",size);
+  var cols=["255,180,0","255,46,99","8,247,254"];
+  for(var i=0;i<46;i++)P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*4+1,v:Math.random()*.8+.25,c:cols[i%3],p:Math.random()*6});
+  if(!matchMedia("(prefers-reduced-motion:reduce)").matches){
+    (function loop(){
+      x.clearRect(0,0,W,H);
+      P.forEach(function(p){
+        p.y-=p.v;p.p+=.02;p.x+=Math.sin(p.p)*.4;
+        if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
+        x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);
+        x.fillStyle="rgba("+p.c+",.35)";x.shadowBlur=12;x.shadowColor="rgba("+p.c+",.9)";x.fill();
+      });
+      requestAnimationFrame(loop);
+    })();
+  }
+})();
+</script>
+</body>
+</html>
