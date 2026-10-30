@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nhau cung Huy Bu//VI
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:nhau-cung-huy-bu-20261107@thanhhuytran919.github.io
+DTSTAMP:20261030T130000Z
+DTSTART:20261107T120000Z
+DTEND:20261107T160000Z
+SUMMARY:Nhậu cùng Huy Bu (sinh nhật Huy Bu)
+LOCATION:Quán nhậu Xích Lô 245\, 146B Trần Văn Hoài\, Ninh Kiều\
+ , Cần Thơ
+DESCRIPTION:19:00 Thứ Bảy 07.11.2026 tại Quán nhậu Xích Lô 245.\
+ nChỉ đường: https://maps.app.goo.gl/JCJJkiJA2Cok2xRJ8\nCó gì gọi
+  Bé Bu: 0773948461\nThiệp mời: https://thanhhuytran919.github.io/nhau
+ -cung-huy-bu/
+URL:https://thanhhuytran919.github.io/nhau-cung-huy-bu/
+GEO:10.0264212;105.7716314
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Ngày mai 19:00 nhậu cùng Huy Bu tại Xích Lô 245
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:2 tiếng nữa nhậu cùng Huy Bu, chuẩn bị đi thôi
+END:VALARM
+END:VEVENT
+END:VCALENDAR
