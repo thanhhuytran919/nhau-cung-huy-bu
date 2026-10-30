@@ -177,12 +177,12 @@ h2{font-family:var(--display);font-weight:700;font-size:36px;line-height:1;lette
 /* ---------- Cheers ---------- */
 .cheers{margin-top:104px;text-align:center}
 .cheers p{color:var(--tan);margin-top:8px}
-.mugs{position:relative;display:inline-flex;align-items:flex-end;gap:2px;margin:8px auto 0;padding:64px 20px 0;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;background:none;border:0}
-.mug{width:92px;height:116px}
-.mug.l{transform-origin:95% 90%}
-.mug.r{transform:scaleX(-1);transform-origin:5% 90%}
-.mugs.go .mug.l{animation:clinkL .7s var(--ease)}
-.mugs.go .mug.r{animation:clinkR .7s var(--ease)}
+.mugs{position:relative;display:inline-flex;align-items:flex-end;margin:8px auto 0;padding:64px 20px 0;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;background:none;border:0}
+.mugw{display:block;width:92px;height:116px}
+.mugw.l{transform:scaleX(-1)}
+.mugw.r{margin-left:-14px}
+.mug{display:block;width:100%;height:100%;transform-origin:12% 92%}
+.mugs.go .mug{animation:clink .7s var(--ease)}
 .do{position:absolute;left:50%;top:30px;transform:translate(-50%,0) scale(.5);opacity:0;font:800 64px/1 var(--display);color:var(--amber);text-transform:uppercase;pointer-events:none;letter-spacing:.02em}
 .mugs.go .do{animation:pop 1s var(--ease)}
 .pt{position:absolute;left:50%;top:38%;width:9px;height:9px;border-radius:50%;background:var(--foam);pointer-events:none;animation:fly .75s var(--ease) forwards}
@@ -231,8 +231,7 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
 @keyframes rise{to{transform:none}}
 @keyframes up{to{opacity:1;transform:none}}
 @keyframes on{to{opacity:1}}
-@keyframes clinkL{0%{transform:rotate(0)}35%{transform:rotate(-14deg) translateX(-10px)}60%{transform:rotate(9deg) translateX(8px)}100%{transform:rotate(0)}}
-@keyframes clinkR{0%{transform:scaleX(-1) rotate(0)}35%{transform:scaleX(-1) rotate(-14deg) translateX(-10px)}60%{transform:scaleX(-1) rotate(9deg) translateX(8px)}100%{transform:scaleX(-1) rotate(0)}}
+@keyframes clink{0%{transform:rotate(0)}30%{transform:rotate(10deg) translateX(4px)}58%{transform:rotate(-13deg) translateX(-8px)}100%{transform:rotate(0)}}
 @keyframes pop{0%{opacity:0;transform:translate(-50%,10px) scale(.5)}25%{opacity:1;transform:translate(-50%,-22px) scale(1.15)}70%{opacity:1;transform:translate(-50%,-30px) scale(1)}100%{opacity:0;transform:translate(-50%,-46px) scale(1)}}
 @keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
 
@@ -433,20 +432,20 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
     <p>Bấm vào hai ly bia.</p>
     <button class="mugs" id="mugs" type="button" aria-label="Cụng ly">
       <span class="do" aria-hidden="true">Dô!</span>
-      <svg class="mug l" viewBox="0 0 40 48" aria-hidden="true">
+      <span class="mugw l"><svg class="mug" viewBox="0 0 40 48" aria-hidden="true">
         <rect x="5" y="13" width="23" height="31" rx="4" fill="#f3a93a"/>
         <rect x="8" y="17" width="4" height="22" rx="2" fill="#ffd27a" opacity=".7"/>
         <rect x="5" y="13" width="23" height="31" rx="4" fill="none" stroke="#f7efe1" stroke-width="2"/>
         <path d="M28 20h3.5a4.5 4.5 0 0 1 4.5 4.5v6a4.5 4.5 0 0 1-4.5 4.5H28" fill="none" stroke="#f7efe1" stroke-width="2"/>
         <circle cx="10" cy="12" r="5" fill="#f7efe1"/><circle cx="17" cy="9" r="6" fill="#f7efe1"/><circle cx="24" cy="12" r="5" fill="#f7efe1"/>
-      </svg>
-      <svg class="mug r" viewBox="0 0 40 48" aria-hidden="true">
+      </svg></span>
+      <span class="mugw r"><svg class="mug" viewBox="0 0 40 48" aria-hidden="true">
         <rect x="5" y="13" width="23" height="31" rx="4" fill="#f3a93a"/>
         <rect x="8" y="17" width="4" height="22" rx="2" fill="#ffd27a" opacity=".7"/>
         <rect x="5" y="13" width="23" height="31" rx="4" fill="none" stroke="#f7efe1" stroke-width="2"/>
         <path d="M28 20h3.5a4.5 4.5 0 0 1 4.5 4.5v6a4.5 4.5 0 0 1-4.5 4.5H28" fill="none" stroke="#f7efe1" stroke-width="2"/>
         <circle cx="10" cy="12" r="5" fill="#f7efe1"/><circle cx="17" cy="9" r="6" fill="#f7efe1"/><circle cx="24" cy="12" r="5" fill="#f7efe1"/>
-      </svg>
+      </svg></span>
     </button>
     <p class="tally" id="tally" aria-live="polite"></p>
   </section>
