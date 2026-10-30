@@ -82,6 +82,13 @@ svg{display:block}
 .ready .glow{animation:on 1.8s .15s var(--ease) forwards}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:var(--tan);font-weight:500;min-height:40px;padding-right:48px}
 .top .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber);margin-right:9px;vertical-align:1px}
+.inapp{display:none;align-items:center;gap:10px;margin:6px 0 0;padding:10px 10px 10px 14px;border-radius:14px;background:rgba(243,169,58,.1);border:1px solid rgba(243,169,58,.4);font-size:13px;line-height:1.4;color:var(--tan)}
+.inapp.on{display:flex}
+.inapp .tx{flex:1;min-width:0}
+.inapp b{display:block;color:var(--foam);font-weight:600}
+.inapp .btn{min-height:38px;padding:0 12px;font-size:13px;border-radius:10px;flex:none}
+.inapp .x{width:32px;height:32px;flex:none;border:0;border-radius:50%;background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--tan)}
+.inapp .x svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}
 .lead{padding-top:min(12vh,110px)}
 .title{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.012em;max-width:100%}
 .mask{overflow:hidden;padding:.18em 0 .05em;margin:-.14em 0 -.03em}
@@ -202,7 +209,7 @@ h2{font-family:var(--display);font-weight:700;font-size:36px;line-height:1;lette
 .sheet h3{font-family:var(--display);font-weight:700;font-size:30px;line-height:1}
 .sheet .sub{color:var(--tan);font-size:14px;margin-top:4px}
 .opts{display:grid;gap:4px;margin-top:16px}
-.opt{display:flex;align-items:center;gap:14px;width:100%;padding:12px;border-radius:14px;border:1px solid transparent;background:transparent;color:var(--foam);text-align:left;text-decoration:none;cursor:pointer;font-family:var(--text)}
+.opt{display:flex;align-items:center;gap:14px;width:100%;padding:12px;border-radius:14px;border:1px solid transparent;background:transparent;color:var(--foam);text-align:left;text-decoration:none;cursor:pointer;font-family:var(--text);font-size:inherit;line-height:inherit;-webkit-tap-highlight-color:transparent}
 .opt:hover{background:rgba(247,239,225,.05)}
 .opt.rec{border-color:rgba(243,169,58,.45);background:rgba(243,169,58,.07)}
 .opt .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--night-3);flex:none}
@@ -233,7 +240,7 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
 @media (min-width:880px){
   :root{--gutter:40px}
   .hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);column-gap:56px;align-items:end;padding-top:24px}
-  .hero .top{grid-column:1/-1}
+  .hero .top,.hero .inapp{grid-column:1/-1}
   .lead{padding-top:10vh;padding-bottom:12px}
   .vid-wrap{margin-top:0;justify-self:end;width:100%;max-width:400px}
   .clock{gap:4px 32px}
@@ -279,6 +286,11 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
 <header class="hero">
   <div class="top">
     <span><span class="dot" aria-hidden="true"></span>Thiệp mời từ Bé Bu</span>
+  </div>
+  <div class="inapp" id="inapp" role="note">
+    <div class="tx"><b>Đang mở trong <span class="app">Zalo</span></b>Để đặt lời nhắc, mở thiệp bằng Safari hoặc Chrome.</div>
+    <button class="btn" type="button" id="inapp-open"><span>Mở bằng <span class="bw">Safari</span></span></button>
+    <button class="x" type="button" id="inapp-x" aria-label="Đóng"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
 
   <div class="lead">
@@ -564,24 +576,73 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
   var icCal='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>';
   var icPhone='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>';
   var icPc='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 19h20"/></svg>';
-  var opts=[
-    {k:'g',ic:icCal,t:'Google Calendar',d:'Android và máy tính. Thêm lời nhắc trong lịch sau khi lưu.',href:gUrl,blank:true},
-    {k:'i',ic:icPhone,t:'Lịch iPhone',d:'Mở trong Lịch của Apple, có sẵn nhắc trước một ngày và hai tiếng.',href:ICS},
-    {k:'o',ic:icPc,t:'Outlook, lịch khác',d:'Tải file lịch .ics rồi mở bằng ứng dụng lịch bạn đang dùng.',href:ICS,dl:true}
-  ];
-  var rec=isIOS?'i':'g';
-  opts.sort(function(a,b){return (a.k===rec?-1:0)-(b.k===rec?-1:0)});
-  $('#opts').innerHTML=opts.map(function(o){
-    return '<a class="opt'+(o.k===rec?' rec':'')+'" href="'+o.href+'"'+(o.blank?' target="_blank" rel="noopener"':'')+(o.dl?' download':'')+'>'+
-      '<span class="ic">'+o.ic+'</span><span class="tx"><b>'+o.t+'</b><small>'+o.d+'</small></span>'+(o.k===rec?'<span class="tag">Gợi ý</span>':'')+'</a>';
-  }).join('');
+  var icGlobe='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
+  var icCopy='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+  /* Android: open the phone's own calendar app with the event filled in */
+  var insertIntent='intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.item/event'+
+    ';S.title='+encodeURIComponent(EV.title)+';S.eventLocation='+encodeURIComponent(EV.loc)+';S.description='+encodeURIComponent(EV.desc)+
+    ';l.beginTime='+EV.startMs+';l.endTime='+(EV.startMs+4*3600000)+';end';
+
+  /* In-app browsers (Zalo, Messenger, Facebook, Instagram, TikTok) cannot add to the calendar or download the .ics */
+  var inApp=/Zalo|FBAN|FBAV|FB_IAB|Messenger|Instagram|MicroMessenger|Line\/|BytedanceWebview|TikTok/i.test(ua)||
+    (isIOS&&/Mobile\//.test(ua)&&!/Safari\//.test(ua))||(isAndroid&&/;\s?wv\)/.test(ua));
+  var appName=/Zalo/i.test(ua)?'Zalo':/FBAN|FBAV|FB_IAB|Messenger/i.test(ua)?'Messenger':/Instagram/i.test(ua)?'Instagram':/TikTok|Bytedance/i.test(ua)?'TikTok':'ứng dụng này';
+  var extBrowser=isIOS?'Safari':'Chrome';
+  function openExternal(url){
+    if(isIOS){location.href='x-safari-'+url}
+    else if(isAndroid){
+      var f=document.createElement('iframe');f.style.display='none';f.setAttribute('aria-hidden','true');
+      f.src='intent://'+url.replace(/^https?:\/\//,'')+'#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(url)+';end';
+      document.body.appendChild(f);setTimeout(function(){f.remove()},3000);
+    }
+    else{window.open(url,'_blank');return}
+    setTimeout(function(){
+      if(document.visibilityState==='visible'){toast('Không tự mở được. Bấm nút ⋯ ở góc trên, chọn "Mở bằng trình duyệt".')}
+    },1700);
+  }
+  var optsEl=$('#opts'),noteEl=$('.note',$('#sheet'));
+  if(inApp){
+    optsEl.innerHTML=
+      '<button class="opt rec" type="button" id="opt-ext"><span class="ic">'+icGlobe+'</span><span class="tx"><b>Mở bằng '+extBrowser+'</b><small>Thiệp mở lại trong '+extBrowser+', bảng này tự hiện để bạn thêm vào lịch.</small></span><span class="tag">Gợi ý</span></button>'+
+      '<button class="opt" type="button" id="opt-copy"><span class="ic">'+icCopy+'</span><span class="tx"><b>Sao chép link thiệp</b><small>Dán vào '+extBrowser+' rồi bấm Đặt lời nhắc.</small></span></button>';
+    noteEl.textContent=appName+' không thêm được lịch trực tiếp. Nếu không tự mở: bấm nút ⋯ ở góc trên bên phải, chọn "Mở bằng trình duyệt", rồi bấm Đặt lời nhắc lại.';
+    $('#opt-ext').addEventListener('click',function(){openExternal(SITE+'#nhac')});
+    $('#opt-copy').addEventListener('click',function(){copy(SITE+'#nhac').then(function(){toast('Đã sao chép. Mở '+extBrowser+', dán link vào thanh địa chỉ.')},function(){toast(SITE)})});
+  }else{
+    var opts=[
+      {k:'a',ic:icPhone,t:'Lịch trên điện thoại',d:'Mở thẳng ứng dụng Lịch của máy với sự kiện điền sẵn. Nhớ đặt nhắc trước một ngày.',href:insertIntent,only:'android'},
+      {k:'g',ic:icCal,t:'Google Calendar',d:'Máy tính và Android. Thêm lời nhắc trong lịch sau khi lưu.',href:gUrl,blank:true},
+      {k:'i',ic:icPhone,t:'Lịch iPhone',d:'Mở trong Lịch của Apple, có sẵn nhắc trước một ngày và hai tiếng.',href:ICS},
+      {k:'o',ic:icPc,t:'Outlook, lịch khác',d:'Tải file lịch .ics rồi mở bằng ứng dụng lịch bạn đang dùng.',href:ICS,dl:true}
+    ].filter(function(o){return !o.only||(o.only==='android'&&isAndroid)});
+    var rec=isIOS?'i':isAndroid?'a':'g';
+    opts.sort(function(a,b){return (a.k===rec?-1:0)-(b.k===rec?-1:0)});
+    optsEl.innerHTML=opts.map(function(o){
+      return '<a class="opt'+(o.k===rec?' rec':'')+'" href="'+o.href+'"'+(o.blank?' target="_blank" rel="noopener"':'')+(o.dl?' download':'')+'>'+
+        '<span class="ic">'+o.ic+'</span><span class="tx"><b>'+o.t+'</b><small>'+o.d+'</small></span>'+(o.k===rec?'<span class="tag">Gợi ý</span>':'')+'</a>';
+    }).join('');
+    noteEl.textContent='Nút không phản hồi? Mở thiệp bằng Safari hoặc Chrome rồi thử lại.';
+  }
   var ov=$('#ov'),sheet=$('#sheet'),lastFocus=null;
   function openSheet(){lastFocus=document.activeElement;ov.classList.add('on');sheet.classList.add('on');sheet.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){var f=$('.opt',sheet);f&&f.focus()},80)}
   function closeSheet(){ov.classList.remove('on');sheet.classList.remove('on');sheet.setAttribute('aria-hidden','true');document.body.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus()}
   $$('[data-open-sheet]').forEach(function(b){b.addEventListener('click',openSheet)});
   ov.addEventListener('click',closeSheet);$('#sheet-x').addEventListener('click',closeSheet);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheet.classList.contains('on'))closeSheet()});
-  $$('.opt',sheet).forEach(function(o){o.addEventListener('click',function(){setTimeout(closeSheet,300)})});
+  $$('a.opt',sheet).forEach(function(o){o.addEventListener('click',function(){setTimeout(closeSheet,300)})});
+
+  /* In-app notice at the top, and auto-open the sheet when the page comes back in a real browser via #nhac */
+  var inappEl=$('#inapp');
+  if(inApp){
+    $('.app',inappEl).textContent=appName;$$('.bw',inappEl).forEach(function(e){e.textContent=extBrowser});
+    inappEl.classList.add('on');
+    $('#inapp-open').addEventListener('click',function(){openExternal(SITE+'#nhac')});
+    $('#inapp-x').addEventListener('click',function(){inappEl.classList.remove('on')});
+  }
+  if(location.hash==='#nhac'){
+    try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+    if(!inApp){setTimeout(openSheet,900)}
+  }
 
   /* ----- Menu picker ----- */
   var picked=[],bar=$('#bar'),barN=$('#bar-n');
